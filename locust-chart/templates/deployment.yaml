@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "locust.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "locust.name" . }}  # This label is used for matching the service to the pod
+  template:
+    metadata:
+      labels:
+        app: {{ include "locust.name" . }}  # This label is used within the pod template
+    spec:
+      containers:
+      - name: locust
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 8089  
+        env:
+        - name: LOCUST_HOST
+          value: "dr-temperature-app:5000"  

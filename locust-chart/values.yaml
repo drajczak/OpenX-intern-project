@@ -1,0 +1,9 @@
+replicaCount: 1
+image:
+  repository: dominikrajczak/my-locust-image
+  tag: latest
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 8089

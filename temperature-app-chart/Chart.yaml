@@ -1,0 +1,7 @@
+apiVersion: v2
+name: temperature-app-chart
+description: A Helm chart for Kubernetes
+
+# App Version
+version: 1.0.0
+appVersion: "1.0"
